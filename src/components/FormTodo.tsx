@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const FormTodo = ({ addTask }: { addTask: (task: string) => void }) => {
   const [value, setValue] = useState("");
@@ -6,11 +7,12 @@ const FormTodo = ({ addTask }: { addTask: (task: string) => void }) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     addTask(value);
+    toast.success("Success Add Task");
     setValue("");
   };
   return (
     <form
-      className="bg-blue-700 p-3 rounded-lg flex gap-4"
+      className="bg-blue-700 p-4 rounded-lg flex gap-4"
       onSubmit={handleSubmit}
     >
       <input
@@ -18,7 +20,7 @@ const FormTodo = ({ addTask }: { addTask: (task: string) => void }) => {
         required
         placeholder="Add Task"
         onChange={(e) => setValue(e.target.value)}
-        className="p-2 rounded-lg border-black border-2"
+        className="p-2 text-sm rounded-lg border-black border-1 outline-none"
         type="text"
       />
       <button className="bg-blue-600 text-sm whitespace-nowrap p-2 rounded-lg text-white">

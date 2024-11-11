@@ -1,25 +1,30 @@
-import { useState } from "react";
+import React, { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
+import { Task } from "../utils/type";
 
-const EditTodo = ({ editTodo, task }) => {
-  const [edit, setEdit] = useState(task.todo);
+type EditProps = {
+  editTask: (id: number, task: string) => void;
+  task: Task;
+};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    editTodo(edit, task.id);
-    setEdit("");
+const EditTodo: React.FC<EditProps> = ({ editTask, task }) => {
+  const [value, setValue] = useState<string>(task.todos);
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    editTask(task.id, value);
+    setValue("");
+    toast.success("Success edit field");
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input
-        defaultValue={task.todos}
-        value={edit}
-        className="p-2 rounded-lg text-black"
-        onChange={(e) => setEdit(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        defaultValue={value}
+        className="p-2 rounded-lg mx-3 text-black"
+        type="text"
       />
-      <button className="bg-blue-900 p-2 rounded-lg text-xs mx-4">
-        Clear Edit
-      </button>
+      <button className="text-xs p-3 rounded-lg bg-blue-800">Edit Task</button>
     </form>
   );
 };

@@ -7,8 +7,8 @@ const Todo: React.FC<TodoProps> = ({
   handleDelete,
   todoCompleted,
   handleEdit,
-  editTodo,
   handleStarValue,
+  editTask,
 }) => {
   return (
     <div>
@@ -19,7 +19,7 @@ const Todo: React.FC<TodoProps> = ({
             key={idx}
           >
             {item.isEdit ? (
-              <EditTodo task={item} editTodo={editTodo} />
+              <EditTodo editTask={editTask} task={item} />
             ) : (
               <>
                 <div className="flex gap-3 items-center">

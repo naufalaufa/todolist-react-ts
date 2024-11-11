@@ -1,5 +1,5 @@
 export type Task = {
-  originalIndex: unknown;
+  originalIndex: number;
   id: number;
   todos: string;
   isCompleted: boolean;
@@ -12,6 +12,6 @@ export type TodoProps = {
   handleDelete: (id: number) => void;
   todoCompleted: (id: number) => void;
   handleEdit: (id: number) => void;
-  editTodo: (id: number, task: Task[]) => void;
+  editTask: (id: number, task: string) => void;
   handleStarValue: (id: number) => void;
 };

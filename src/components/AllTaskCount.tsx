@@ -1,4 +1,6 @@
-const AllTaskCount = ({ task }) => {
+import { Task } from "../utils/type";
+
+const AllTaskCount = ({ task }: { task: Task[] }) => {
   return (
     <div>
       {task.length > 0 && (

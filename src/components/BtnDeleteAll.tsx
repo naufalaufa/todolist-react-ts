@@ -1,4 +1,12 @@
-const BtnDeleteAll = ({ task, deleteAll }) => {
+import { Task } from "../utils/type";
+
+const BtnDeleteAll = ({
+  task,
+  deleteAll,
+}: {
+  task: Task[];
+  deleteAll: () => void;
+}) => {
   return (
     <>
       {task.length === 0 && (

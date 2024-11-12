@@ -21,10 +21,12 @@ const EditTodo: React.FC<EditProps> = ({ editTask, task }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         defaultValue={value}
-        className="p-2 rounded-lg mx-3 text-black"
+        className="p-2 rounded-lg mx-0 text-black"
         type="text"
       />
-      <button className="text-xs p-3 rounded-lg bg-blue-800">Edit Task</button>
+      <button className="text-xs p-2 ml-2 rounded-lg bg-blue-800">
+        Edit Task
+      </button>
     </form>
   );
 };

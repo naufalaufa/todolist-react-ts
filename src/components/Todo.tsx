@@ -66,12 +66,14 @@ const Todo: React.FC<TodoProps> = ({
                 </button>
               )}
 
-              <button
-                className="p-2 rounded-lg text-xs text-white bg bg-red-600"
-                onClick={() => handleDelete(item.id)}
-              >
-                Delete
-              </button>
+              {!item.isEdit ? (
+                <button
+                  className="p-2 rounded-lg text-xs text-white bg bg-red-600"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  Delete
+                </button>
+              ) : null}
             </div>
           </div>
         );

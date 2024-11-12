@@ -21,7 +21,7 @@ const EditTodo: React.FC<EditProps> = ({ editTask, task }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         defaultValue={value}
-        className="p-2 rounded-lg mx-0 text-black"
+        className="p-1 rounded-lg mx-0 text-black outline-none"
         type="text"
       />
       <button className="text-xs p-2 ml-2 rounded-lg bg-blue-800">

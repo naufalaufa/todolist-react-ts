@@ -103,7 +103,7 @@ const App = () => {
             todos={task}
             handleDelete={handleDelete}
           />
-          <BtnDeleteAll task={task} deleteAll={deleteAll} />
+          <BtnDeleteAll  filteredSearchTodo={filteredSearchTodo}  task={task} deleteAll={deleteAll} />
         </div>
         <TextSection />
       </div>

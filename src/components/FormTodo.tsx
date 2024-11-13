@@ -11,10 +11,7 @@ const FormTodo = ({ addTask }: { addTask: (task: string) => void }) => {
     setValue("");
   };
   return (
-    <form
-      className="bg-blue-700 p-4 rounded-lg flex gap-4"
-      onSubmit={handleSubmit}
-    >
+    <form className="flex gap-2" onSubmit={handleSubmit}>
       <input
         value={value}
         required
@@ -23,6 +20,7 @@ const FormTodo = ({ addTask }: { addTask: (task: string) => void }) => {
         className="p-2 text-sm rounded-lg border-black border-1 outline-none"
         type="text"
       />
+
       <button className="bg-blue-600 text-sm whitespace-nowrap p-2 rounded-lg text-white">
         Add task
       </button>

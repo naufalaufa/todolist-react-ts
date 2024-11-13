@@ -7,12 +7,14 @@ import BtnDeleteAll from "./components/BtnDeleteAll";
 import TextSection from "./components/TextSection";
 import AllTaskCount from "./components/AllTaskCount";
 import HeaderSection from "./components/HeaderSection";
+import SearchTodo from "./components/SearchTodo";
 
 const App = () => {
   const storedItems = localStorage.getItem("task");
   const storageItems: Task[] = storedItems ? JSON.parse(storedItems) : [];
 
   const [task, setTask] = useState<Task[]>(storageItems);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     localStorage.setItem("task", JSON.stringify(task));
@@ -80,14 +82,20 @@ const App = () => {
     toast.success("All tasks deleted successfully");
   };
 
+  const filteredSearchTodo = task.filter((todo) =>
+    todo.todos.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <div className="grid bg-blue-200 min-h-screen place-content-center w-screen max-w-full overflow-hidden m-auto ">
       <div className="grid sm:grid-cols-2 min-h-screen p-4 px-9 place-content-center place-items-center">
         <div className="p-4 rounded-lg bg-blue-900">
           <HeaderSection />
           <AllTaskCount task={task} />
+          <SearchTodo searchText={searchText} setSearchText={setSearchText} />
           <FormTodo addTask={addTask} />
           <Todo
+            filteredSearchTodo={filteredSearchTodo}
             editTask={editTask}
             handleStarValue={handleStarValue}
             handleEdit={handleEdit}

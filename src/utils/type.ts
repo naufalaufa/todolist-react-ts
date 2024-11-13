@@ -14,4 +14,5 @@ export type TodoProps = {
   handleEdit: (id: number) => void;
   editTask: (id: number, task: string) => void;
   handleStarValue: (id: number) => void;
+  filteredSearchTodo: Task[];
 };

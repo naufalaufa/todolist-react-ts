@@ -1,9 +1,11 @@
+import React from "react";
 import { toast } from "react-toastify";
 import { TodoProps } from "../utils/type";
 import EditTodo from "./EditTodo";
 import { FaStar } from "react-icons/fa";
+
 const Todo: React.FC<TodoProps> = ({
-  todos,
+  filteredSearchTodo,
   handleDelete,
   todoCompleted,
   handleEdit,
@@ -12,10 +14,10 @@ const Todo: React.FC<TodoProps> = ({
 }) => {
   return (
     <div>
-      {todos.map((item, idx) => {
+      {filteredSearchTodo.map((item, idx) => {
         return (
           <div
-            className="p-2 text-white my-4 flex gap-3 bg-blue-600 rounded-lg  justify-between"
+            className="p-2 text-white my-4 flex gap-3 bg-blue-600 rounded-lg justify-between"
             key={idx}
           >
             {item.isEdit ? (
@@ -28,11 +30,11 @@ const Todo: React.FC<TodoProps> = ({
                       handleStarValue(item.id);
                       if (!item.starValue) {
                         toast.success(
-                          `Success add ${item.todos} to priority task`
+                          `Successfully added ${item.todos} to priority tasks`
                         );
                       } else {
                         toast.error(
-                          `Success remove ${item.todos} to priority task`
+                          `Successfully removed ${item.todos} from priority tasks`
                         );
                       }
                     }}
@@ -46,7 +48,7 @@ const Todo: React.FC<TodoProps> = ({
                   <p
                     className={`${
                       item.isCompleted
-                        ? " line-through cursor-pointer text-xs"
+                        ? "line-through cursor-pointer text-xs"
                         : "bg-blue-600 cursor-pointer text-xs"
                     }`}
                     onClick={() => todoCompleted(item.id)}
@@ -68,7 +70,7 @@ const Todo: React.FC<TodoProps> = ({
 
               {!item.isEdit ? (
                 <button
-                  className="p-2 rounded-lg text-xs text-white bg bg-red-600"
+                  className="p-2 rounded-lg text-xs text-white bg-red-600"
                   onClick={() => handleDelete(item.id)}
                 >
                   Delete

@@ -91,7 +91,7 @@ const App = () => {
       <div className="grid sm:grid-cols-2 min-h-screen p-4 px-9 place-content-center place-items-center">
         <div className="p-4 rounded-lg bg-blue-900">
           <HeaderSection />
-          <AllTaskCount task={task} />
+          <AllTaskCount filteredSearchTodo={filteredSearchTodo} task={task} />
           <SearchTodo searchText={searchText} setSearchText={setSearchText} />
           <FormTodo addTask={addTask} />
           <Todo
